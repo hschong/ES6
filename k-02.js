@@ -21,7 +21,7 @@ console.log(newArray(numbers))
 // 20104. Create a function that returns an array of  all the students' names
 // ['Albert', 'Bob', 'Claudia']
 let getName = (element) => element.name
-console.log(getName(students.forEach(element => element.name)))
+students.forEach(element => console.log(getName(element)))
 
 // .filter()
 // 20105. Create a function that returns an array with only numbers equal to or greater than 22
@@ -32,7 +32,7 @@ console.log(logFilter(numbers))
 let filterGreater22 = (element) => {
     array.filter(element => element >= 22)
 }
-console.log(newNumbers.filter(n => n >= 22))
+console.log(numbers.filter(n => n >= 22))
 
 // 20106. Create a function that returns an array with only numbers greater than the parameter passed onto the function
 // 70 => [90, 78, 187]
@@ -97,26 +97,51 @@ console.log(sortedNumbers.reverse())
 
 // 20116. Create a function that returns an array with students sorted by ascending length of their names
 // [{name:'Bob'},{name:'Albert'},{name:'Claudia'}]
-let tempStudent = []
-var name = ''
 
-for (element in students) {
-    name = students[element].name
-    tempStudent.push({})
+
+// Math
+let products = [{name:'bread',price:3.5},{name:'orange',price:1.3},{name:'gum',price:2.8}]
+
+// Round
+// 20201. Create a function that rounds any given number passed to the function, removing any decimals
+// 	3.14 => 3
+// 	15.9 => 16
+let getRoundNumber = (number) => Math.round(number)
+let logRoundNumber = (array) => array.forEach((element) => Math.round(element))
+
+// 20202. Create a function that returns all products with their prices rounded
+// [{name:'bread',price:4},{name:'orange',price:1},{name:'gum',price:3}]
+let productAfterRounding = (array) => {
+  array.forEach((element) => element.price = getRoundNumber(element.price))
+  return array
 }
+console.log(productAfterRounding(products))
 
-let sortedName = tempStudent.sort((a, b) => {
-    if (a.name > b.name) {
-      return 1
-    }
+// 20203. Create a function that takes 2 numbers as parameters and returns the first number rounded to the number of decimals defined by the second parameter.
+let round2precision = (number, precision) => {
+  remainder = number % precision
+  if ((remainder/precision) >= 0.5) {
+    number++
+  } else {
+    number--
+  }
 
-    if (a.name < b.name) {
-      return -1
-    }
+  return number
+}
+console.log(round2precision(10, 7))
 
-    // a must be equal to b
-    return 0
-  })
-console.log(tempStudent)
+// Power
+// 20204. Create a function that that takes 2 numbers as parameters and returns the first number to the power of the second number.
+let getPower = (number, exponentialNumber) => {
+  if (exponentialNumber == 0) {
+    return 1
+  } else {
+    return number * getPower(number, --exponentialNumber)
+  }
+}
+console.log(getPower(2,9))
 
-tempStudent.forEach()
+// Random
+// 20205. Create a function that returns a random number between 1 and 10.
+
+// 20206. Create a function that takes a number as parameter and returns a random number between 1 and the parameter.
