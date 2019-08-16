@@ -1,0 +1,10 @@
+{
+	"files.exclude": {
+        "README.md": true
+	},
+	"folders": [
+		{
+			"path": "."
+		}
+	]
+}

@@ -1,0 +1,7 @@
+{
+    "files.exclude": {
+        "README.md": true,
+        "git-practice": true,
+        "Tortuga.code-workspace": true
+    }
+}
