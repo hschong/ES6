@@ -2,36 +2,32 @@ let numbers = [1, 90, 78, 3, 22, 187, 21]
 let students = [{name:'Albert'}, {name:'Bob'}, {name:'Claudia'}]
 let mix = [5, 'David', {name:'Ella'}, 23, 'Frank']
 
+// .forEach()
 // 20101. Create a function that logs each number individually
-numbers.forEach(element => console.log(element))
+let logElement = (array) => array.forEach(element => console.log(element))
+logElement(numbers)
 
 // 20102. Create a function that logs each student's name
-students.forEach(element => console.log(element.name))
-let logNames = (array) => {
-    array.forEach(element => console.log(element.name))
-}
+let logNames = (array) => array.forEach(element => console.log(element.name))
+logNames(students)
 
-for (element in students) { // element == index
-    console.log(students[element].name)
-}
-
+// .map()
 // 20103. Create a function that adds 1 to each number and returns a new array
 // [2, 91, 79, 4, 23, 188, 22]
 const addOne = (element) => ++element
-let newNumbers = numbers.map(addOne)
-console.log(newNumbers)
+let newArray = (array) => array.map(addOne)
+console.log(newArray(numbers))
 
 // 20104. Create a function that returns an array of  all the students' names
 // ['Albert', 'Bob', 'Claudia']
-const getName = (element) => element.name
-console.log(students.map(getName))
+let getName = (element) => element.name
+console.log(getName(students.forEach(element => element.name)))
 
 // .filter()
 // 20105. Create a function that returns an array with only numbers equal to or greater than 22
 // [91, 79, 23, 188, 22]
-let logFilter = (array) => {
-    console.log(array.filter(n => n >= 22))
-}
+let logFilter = (array) => array.filter(n => n >= 22)
+console.log(logFilter(numbers))
 
 let filterGreater22 = (element) => {
     array.filter(element => element >= 22)
