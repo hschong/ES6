@@ -11,62 +11,69 @@ logElement(numbers)
 let logNames = (array) => array.forEach(element => console.log(element.name))
 logNames(students)
 
+
 // .map()
 // 20103. Create a function that adds 1 to each number and returns a new array
 // [2, 91, 79, 4, 23, 188, 22]
-const addOne = (element) => ++element
-let newArray = (array) => array.map(addOne)
-console.log(newArray(numbers))
+let newNumbers = []
+let addOne = (array) => array.map((element) => newNumbers.push(++element))
+addOne(numbers)
+newNumbers.forEach((element) => console.log(element))
 
 // 20104. Create a function that returns an array of  all the students' names
 // ['Albert', 'Bob', 'Claudia']
-let getName = (element) => element.name
-students.forEach(element => console.log(getName(element)))
+let studentName = []
+let getName = (array) => array.forEach((element) => studentName.push(element.name))
+getName(students)
+console.log(studentName)
+
 
 // .filter()
 // 20105. Create a function that returns an array with only numbers equal to or greater than 22
 // [91, 79, 23, 188, 22]
-let logFilter = (array) => array.filter(n => n >= 22)
-console.log(logFilter(numbers))
+let filterGreater22 = (array) => array.filter(element => element >= 22)
+console.log(filterGreater22(newNumbers))
 
-let filterGreater22 = (element) => {
-    array.filter(element => element >= 22)
-}
-console.log(numbers.filter(n => n >= 22))
-
-// 20106. Create a function that returns an array with only numbers greater than the parameter passed onto the function
+// 20106. Create a function that returns an array with only numbers greater than 
+// the parameter passed onto the function
 // 70 => [90, 78, 187]
-const greaterParameter = (array, value) => {
-    return array.filter(n => n > value)
-}
+const greaterParameter = (array, value) => array.filter(n => n > value)
 console.log(greaterParameter(numbers, 70))
 
-
-// 20107. Create a function that returns an array with only students whose name is more than 6 characters long
+// 20107. Create a function that returns an array with only students 
+// whose name is more than 6 characters long
 // [{name:'Claudia'}]
-let newStudents = students.filter(element => element.name.length > 6)
-console.log(newStudents)
+let nameGreater6 = (array) => array.filter(element => {
+  if (element.name.length > 6) {
+    console.log(element)
+  }
+})
+nameGreater6(students)
 
 // 20108. Create a function that returns an array with only strings from mix
 // ['David', 'Frank']
-let stringOnly = mix.filter(element => typeof(element) === 'string')
-console.log(stringOnly)
+let getStringOnly = (array) => array.filter(element => typeof(element) === 'string')
+console.log(getStringOnly(mix))
+
 
 // .find()
 // 20109. Create a function that returns the first number greater than 100
 // 187
-console.log(numbers.find(element => element > 100))
+let getGreater100 = (array) => array.find((element) => element > 100)
+console.log(getGreater100(numbers))
 
 // 20110. Create a function that returns the first student whose name is Bob
 // {
 // 	name: 'Bob'
 // }
-console.log(students.find(element => element.name === 'Bob'))
+let getFirstNameInArray = (array, name) => array.find((element) => element.name === name)
+console.log(getFirstNameInArray(students, 'Bob'))
 
 // .reduce()
 // 20111. Create a function that returns the sum of all numbers using reduce()
 // 402
-console.log(numbers.reduce((t, i) => t + i))
+let getSumOfAllNumbers = (array) => array.reduce((sum, element) => sum + element)
+console.log(getSumOfAllNumbers(numbers))
 
 // 20112. Create a function that returns the sum of all numbers without using reduce()
 // 402
@@ -95,7 +102,8 @@ let compareNumbers = (a, b) => a - b
 let sortedNumbers = numbers.sort(compareNumbers)
 console.log(sortedNumbers.reverse())
 
-// 20116. Create a function that returns an array with students sorted by ascending length of their names
+// 20116. Create a function that returns an array with students sorted by ascending 
+// length of their names
 // [{name:'Bob'},{name:'Albert'},{name:'Claudia'}]
 
 
@@ -103,7 +111,8 @@ console.log(sortedNumbers.reverse())
 let products = [{name:'bread',price:3.5},{name:'orange',price:1.3},{name:'gum',price:2.8}]
 
 // Round
-// 20201. Create a function that rounds any given number passed to the function, removing any decimals
+// 20201. Create a function that rounds any given number passed to the function, 
+// removing any decimals
 // 	3.14 => 3
 // 	15.9 => 16
 let getRoundNumber = (number) => Math.round(number)
@@ -117,7 +126,8 @@ let productAfterRounding = (array) => {
 }
 console.log(productAfterRounding(products))
 
-// 20203. Create a function that takes 2 numbers as parameters and returns the first number rounded to the number of decimals defined by the second parameter.
+// 20203. Create a function that takes 2 numbers as parameters and returns 
+// the first number rounded to the number of decimals defined by the second parameter.
 let round2precision = (number, precision) => {
   remainder = number % precision
   if ((remainder/precision) >= 0.5) {
@@ -131,7 +141,8 @@ let round2precision = (number, precision) => {
 console.log(round2precision(10, 7))
 
 // Power
-// 20204. Create a function that that takes 2 numbers as parameters and returns the first number to the power of the second number.
+// 20204. Create a function that that takes 2 numbers as parameters and returns 
+// the first number to the power of the second number.
 let getPower = (number, exponentialNumber) => {
   if (exponentialNumber == 0) {
     return 1
@@ -143,5 +154,10 @@ console.log(getPower(2,9))
 
 // Random
 // 20205. Create a function that returns a random number between 1 and 10.
+let getRandomNumber = () => Math.floor(Math.random() * 10 + 1)
+console.log(getRandomNumber())
 
-// 20206. Create a function that takes a number as parameter and returns a random number between 1 and the parameter.
+// 20206. Create a function that takes a number as parameter and returns 
+// a random number between 1 and the parameter.
+let getRandomNumberFromOneToGivenNumber = (givenNumber) => Math.floor(Math.random() * givenNumber + 1)
+console.log(getRandomNumber(20))
