@@ -174,45 +174,44 @@ let products = [{name:'bread',price:3.5},{name:'orange',price:1.3},{name:'gum',p
 // 	3.14 => 3
 // 	15.9 => 16
 console.log('20201. ')
-let getRoundNumber = (number) => Math.round(number)
-let logRoundNumber = (array) => array.forEach((element) => Math.round(element))
+let getRoundNumber = (number, decimals) => {
+  if (decimals === undefined ) {
+    return Math.round(number)
+  } else {
+    return number.toFixed(decimals)
+  }
+}
+console.log(getRoundNumber(products[0].price))
 
 // 20202. Create a function that returns all products with their prices rounded
-// [{name:'bread',price:4},{name:'orange',price:1},{name:'gum',price:3}]
+// [{name:'bread',price:4},{name:'orange',price:1},n{name:'gum',price:3}]
 console.log('20202. ')
-let productAfterRounding = (array) => {
+let getProductsAfterRounding = (array) => {
   array.forEach((element) => element.price = getRoundNumber(element.price))
   return array
 }
-console.log(productAfterRounding(products))
+getProductsAfterRounding(products).forEach((element) => console.log(element))
 
 // 20203. Create a function that takes 2 numbers as parameters and returns 
 // the first number rounded to the number of decimals defined by the second parameter.
 console.log('20203. ')
-let round2precision = (number, precision) => {
-  remainder = number % precision
-  if ((remainder/precision) >= 0.5) {
-    number++
-  } else {
-    number--
-  }
-
-  return number
-}
-console.log(round2precision(10, 7))
+console.log(getRoundNumber(1013.34529, 2))
 
 // Power
 // 20204. Create a function that that takes 2 numbers as parameters and returns 
 // the first number to the power of the second number.
 console.log('20204. ')
-let getPower = (number, exponentialNumber) => {
+let getNumberToPowerOfN = (number, exponentialNumber) => {
   if (exponentialNumber == 0) {
     return 1
   } else {
-    return number * getPower(number, --exponentialNumber)
+    return number * getNumberToPowerOfN(number, --exponentialNumber)
   }
 }
-console.log(getPower(2,9))
+console.log(getNumberToPowerOfN(2,9))
+
+let getNumber2PowerOfN = (number, n) => Math.pow(number, n)
+console.log(getNumber2PowerOfN(2,9))
 
 // Random
 // 20205. Create a function that returns a random number between 1 and 10.
