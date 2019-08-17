@@ -114,30 +114,51 @@ console.log(getSumOfAllNumbers(numbers))
 // 20112. Create a function that returns the sum of all numbers without using reduce()
 // 402
 console.log('20112. ')
-var sum = 0
-let getSumOfElements = (array) => {
-  array.forEach((element) => sum += element)
-  return sum
+let getSumOfAllElements = (array) => {
+  let result = 0
+  array.forEach((element) => result += element)
+  return result
 }
-console.log(sum)
+console.log(getSumOfAllElements(numbers))
 
 // 20113. Create a function that returns the difference of all numbers, using reduce()
 //  -400
 console.log('20113. ')
-console.log(numbers.reduce((t,i) => t - i))
+let getDifferenceOfAllElements = (array) => array.reduce((prevValue, curValue) => prevValue - curValue) 
+console.log(getDifferenceOfAllElements(numbers))
 
 // 20114. Create a function that returns the product of all numbers
 // 1819457640
 console.log('20114. ')
-console.log(numbers.reduce((t, i) => t * i))
+let getProductOfAllElements = (array) => array.reduce((prevValue, curValue) => prevValue *= curValue)
+console.log(getProductOfAllElements(numbers))
 
 // .sort()
 // 20115. Create a function that returns an array with numbers sorted in descending order
 // [187, 90, 78, 22, 21, 3, 1]
 console.log('20115. ')
+let Ascending = Symbol('Ascending')
+let Descending = Symbol('Descending')
 let compareNumbers = (a, b) => a - b
-let sortedNumbers = numbers.sort(compareNumbers)
-console.log(sortedNumbers.reverse())
+
+let sorting = (array, direction) => {
+  switch (direction) {
+    case Ascending:
+      array.sort(compareNumbers)
+      break
+
+    case Descending:
+      array.sort(compareNumbers)
+      array.reverse()
+      break
+    
+    default:
+      console.log('ordering direction is not defined.')
+  }
+
+  return array
+}
+console.log(sorting(numbers, Descending))
 
 // 20116. Create a function that returns an array with students sorted by ascending 
 // length of their names
