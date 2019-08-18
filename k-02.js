@@ -344,7 +344,33 @@ newPrices.forEach((element) => console.log(element.currency, element.value))
 // that reads exactly the same from left to right and backwards).
 // ['anna', 'bob']
 console.log('#020303')
+let palindromes = []
 
+let isPalindrome = (str) => {
+  let result = true
+
+  if (str.length === 0 || str.length === 1) {
+    return true
+  } else if (str.charAt(0) === str.charAt(str.length-1)) {
+    result = isPalindrome(str.slice(1, str.length-1))
+  } else {
+    return false
+  }
+
+  return result
+}
+
+let getPalindromes = (array) => {
+  
+  array.forEach((name) => {
+    if (isPalindrome(name) === true) {
+      palindromes.push(name)
+    }
+  })
+
+  return palindromes
+}
+console.log(getPalindromes(names))
 
 // #020304
 // Create a function that, given any number (positive integer) returns the number 
@@ -391,7 +417,7 @@ let logFizzBuzz = (firstNum, lastNum) => {
     inc++
   }
 }
-logFizzBuzz(12, 133)
+logFizzBuzz(12, 32)
 
 // #020306
 // Create a function a that takes 2 numbers as parameters and returns their sum. 
