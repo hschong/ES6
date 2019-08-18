@@ -373,27 +373,26 @@ let getPalindromes = (array) => {
 console.log(getPalindromes(names))
 
 // #020304
-// Create a function that, given any number (positive integer) returns the number 
-// in Roman numerals.
-// 1 => I
-// 2 => II
-// 3 => III
-// 4 => IV
-// 5 => V
-// 6 => VI
-// 7 => VII
-// 8 => VIII
-// 9 => IX
-// 10 => X
-// 11 => XI
-// 20 => XX
-// 40 => XL
-// 50 => L
-// 100 => C
-// 500 => D
-// 1000 => M
+// Create a function that, given any number (positive integer) returns 
+// the number in Roman numerals.
 console.log('#020304')
+let romanNumerals =''
+const RomanNumerals = {
+  M: 1000, D: 500, C: 100, L: 50, XL: 40, XX: 20, 
+  X: 10, IX: 9, VIII: 8, VII: 7, VI: 6, V: 5, IV: 4, III: 3, II: 2, I: 1
+}
 
+let getRomanNumerals = (number) => { 
+  for (key in RomanNumerals) {
+    while (number >= RomanNumerals[key]) {
+      romanNumerals += key
+      number -= RomanNumerals[key]
+    }
+  }
+  
+  return romanNumerals
+}
+console.log(getRomanNumerals(1387))
 
 // #020305
 // Create a function that loops numbers from 0 to 20. For each number, if the number is 
