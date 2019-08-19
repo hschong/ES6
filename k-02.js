@@ -204,6 +204,25 @@ console.log('20116. ')
 // #020119
 // Given the following currency denominations
 // [10, 5, 1, 0.5, 0.2, 0.1, 0.05, 0.01]
+// 27.58 => [10, 10, 5, 1, 1, 0.5, 0.05, 0.01, 0.01, 0.01]
+// dens = [10, 5, 1, 0.5, 0.2, 0.1, 0.05, 0.01]
+
+// let denominate = (arr,num) => {
+// 	let total = num
+// 	let newArray = []
+// 	arr.forEach((e,i) => {
+// 		while (num.toFixed(2) >= e) {
+// 			newArray.push(e)
+// 			num = num -= e
+// 		}
+// 		console.log('num', num)
+// 	}
+// 	)
+// 	return newArray
+// }
+// console.log(denominationFunction(dens,27.58))
+
+
 
 // create a function that returns an array with separate denominations needed to 
 // reach the amount passed into the function. Optimize for higher denominations.
@@ -230,16 +249,16 @@ console.log(getRoundNumber(products[0].price))
 
 
 // 020202. Create a function that returns all products with their prices rounded
-// [{name:'bread',price:4},{name:'orange',price:1},n{name:'gum',price:3}]
+// [{name:'bread',price:4},{name:'orange',price:1},{name:'gum',price:3}]
 console.log('20202. ')
 let getProductsAfterRounding = (array) => {
   array.forEach((element) => element.price = getRoundNumber(element.price))
   return array
 }
-getProductsAfterRounding(products).forEach((element) => console.log(element))
+console.log(getProductsAfterRounding(products))
 
 
-// 020203. Create a function that takes 2 numbers as parameters and returns 
+// 020203. Create a function that takes 2 numbers as cle and returns 
 // the first number rounded to the number of decimals defined by the second parameter.
 console.log('20203. ')
 console.log(getRoundNumber(1013.34529, 2))
@@ -249,15 +268,6 @@ console.log(getRoundNumber(1013.34529, 2))
 // 020204. Create a function that that takes 2 numbers as parameters and returns 
 // the first number to the power of the second number.
 console.log('20204. ')
-let getNumberToPowerOfN = (number, exponentialNumber) => {
-  if (exponentialNumber == 0) {
-    return 1
-  } else {
-    return number * getNumberToPowerOfN(number, --exponentialNumber)
-  }
-}
-console.log(getNumberToPowerOfN(2,9))
-
 let getNumber2PowerOfN = (number, n) => Math.pow(number, n)
 console.log(getNumber2PowerOfN(2,9))
 
@@ -285,104 +295,65 @@ let names = ['anna', 'john', 'bob', 'frank']
 // #020301
 // Flip each word in phrase and return a single string
 // 'tpircSavaJ si eht tseb'
-console.log('#020301')
-let getReverseString = (str) => {
-  if (str == '') {
-    return ''
-  } else {
-    return getReverseString(str.substr(1)) + str.charAt(0)
-  }
-}
-
-// let getReverseString = (str) => {
-//   var arrayWords = str.split('')
-//   arrayWords.reverse()
-//   return arrayWords.join('')
-// }
-
-let flipWordInSentence = (sentence) => {
-  var index = 0
-  var result = ''
-  var arrayWords = sentence.split(' ')
-  
-  while (index < arrayWords.length) {
-    result += getReverseString(arrayWords[index])
-    if (index !== arrayWords.length-1) {
-      result += ' '
-    }
-    index++
-  }
+let getReverseString = (str) => str.split('').reverse().join('')
+let flipWordInPhrase = (phrase) => {
+  const words = phrase.split(' ')
+  const result = words.map(getReverseString)
 
   return result
 }
-console.log(flipWordInSentence(phrase))
+
+console.log('#020301', flipWordInPhrase(phrase))
 
 
 // #020302
 // Convert the array of prices into the following array of objects. 
 // Make sure that the value property is of type number.
-console.log('#020302')
 let newPrices = []
-
-let separatePrices = (array) => {
-  let objPrice = {}
-
+let getNewPrices = (array) => {
   array.forEach((str) => {
+    let objPrice = {}
+
     objPrice['currency'] = str.charAt(0)
     objPrice['value'] = str.substr(1)
     newPrices.push(objPrice)
-    console.log(objPrice)
   })
+
+  return newPrices
 }
 
-separatePrices(prices)
-newPrices.forEach((element) => console.log(element.currency, element.value))
+console.log('#020302', getNewPrices(prices))
 
 
 // #020303
 // From the array names return only the palindromes (a palindrome is a word 
 // that reads exactly the same from left to right and backwards).
 // ['anna', 'bob']
-console.log('#020303')
 let palindromes = []
-
-let isPalindrome = (str) => {
-  let result = true
-
-  if (str.length === 0 || str.length === 1) {
-    return true
-  } else if (str.charAt(0) === str.charAt(str.length-1)) {
-    result = isPalindrome(str.slice(1, str.length-1))
-  } else {
-    return false
-  }
-
-  return result
-}
-
+let isPalindrome = (str) => str === getReverseString(str) ? true : false
 let getPalindromes = (array) => {
-  
-  array.forEach((name) => {
-    if (isPalindrome(name) === true) {
-      palindromes.push(name)
+  array.forEach((str) => {
+    if (isPalindrome(str) === true) {
+      palindromes.push(str)
     }
   })
-
+  
   return palindromes
 }
-console.log(getPalindromes(names))
+
+console.log('#020303', getPalindromes(names))
 
 // #020304
 // Create a function that, given any number (positive integer) returns 
 // the number in Roman numerals.
-console.log('#020304')
-let romanNumerals =''
 const RomanNumerals = {
   M: 1000, D: 500, C: 100, L: 50, XL: 40, XX: 20, 
   X: 10, IX: 9, VIII: 8, VII: 7, VI: 6, V: 5, IV: 4, III: 3, II: 2, I: 1
 }
 
 let getRomanNumerals = (number) => { 
+  let romanNumerals = ''
+
   for (key in RomanNumerals) {
     while (number >= RomanNumerals[key]) {
       romanNumerals += key
@@ -392,13 +363,14 @@ let getRomanNumerals = (number) => {
   
   return romanNumerals
 }
-console.log(getRomanNumerals(1387))
+
+console.log('#020304', getRomanNumerals(1387))
+
 
 // #020305
 // Create a function that loops numbers from 0 to 20. For each number, if the number is 
 // a multiple of 3, log fizz; if the number is a multiple of 5, log buzz; if the number is 
 // a multiple of both 3 and 5, log fizzbuzz; for all other numbers, log the number itself.
-console.log('#020305')
 let logFizzBuzz = (firstNum, lastNum) => {
   let inc = firstNum
   
@@ -412,10 +384,12 @@ let logFizzBuzz = (firstNum, lastNum) => {
     } else {
       console.log(inc)
     }
-
+    
     inc++
   }
 }
+
+console.log('#020305')
 logFizzBuzz(12, 32)
 
 // #020306
@@ -423,6 +397,7 @@ logFizzBuzz(12, 32)
 // Create a function b that takes 4 parameters, the first is a function that 
 // takes itself 2 parameters, the other 3 are numbers. 
 // Call function b and pass as parameters function a and 3 numbers. 
-// function b should trigger function a passing as parameters the first 2 numbers, therefore 
-// getting their sum, then subtract the last number and return the result.
+// function b should trigger function a passing as parameters the first 2 numbers, 
+// therefore getting their sum, then subtract the last number and return the result.
 console.log('#020306')
+
