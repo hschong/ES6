@@ -35,15 +35,9 @@ class Employee {
 }
 
 let makeEmployeeArray = (names, jobs) => {
-    let result = []
-    let index = 0
-    while (index < names.length) {
-        employee = new Employee(names[index], jobs[index])
-        result.push(employee)
-        index++
-    }
-
-    return result
+    return names.map((name, index) => {
+        employee = new Employee(name, jobs[index])
+    })
 }
 
 console.log('#020502', makeEmployeeArray(names, jobs))
