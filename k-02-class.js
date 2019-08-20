@@ -40,7 +40,7 @@ let makeEmployeeInstance = (index) => {
 }
 
 let makeEmployeeArray = (names, jobs) => {
-    return employees = names.map((name, index) => {
+    return names.map((name, index) => {
         return makeEmployeeInstance(index)
     })
 }
@@ -54,95 +54,72 @@ let belts = ['white', 'yellow', 'orange', 'green', 'blue', 'brown', 'black']
 // property set to the first belt in belts by default.
 // 2. Karateka should also have an increaseRank function that upgrades the belt by 
 // 1 step (from the array belts)
-class Karateka {
-    constructor(name) {
-        this.belt = belts[0]
-    }
+// 3. Create an instance of Karateka with your name
+    class Karateka {
+        constructor(name) {
+            this.name = name
+            this.belt = belts[0]
+        }
 
-    getBelt() {
-        return this.belt
-    }
+        getBelt() {
+            return this.belt
+        }
+    
+        setBelt(index) {
+            this.belt = belts[index]
+        }
+    
+        isYourBeltBlack() {
+            return this.getBelt() === 'black' ? true : false
+        }
+    
+        getIndexOfBelt() {
+            return belts.indexOf(this.getBelt())
+        }
+        
+        judge(score) {
+            if (score > UPGRADE_SCORE) {
+                if (this.isYourBeltBlack() === false) {
+                    this.increaseRank(this.getIndexOfBelt())
+                }
+            }
+        }
 
-    setBelt(index) {
-        this.belt = belts[index]
-    }
-
-    isYourBeltUpgradable() {
-        if (this.getBelt() == 'black') {
-            return false
-        } else {
-            return true
+        increaseRank(index) {
+            this.setBelt(++index)
         }
     }
 
-    getIndexOfBelt() {
-        curBelt = this.getBelt()
-        index = belts.indexOf(curBelt)
-        return index
-    }
+const UPGRADE_SCORE = 8
+const MAX_SCORE = 10
+const MAX_SECONDS = 20
+const INTERVAL_SECOND = 1000
+const MAX_TRAINING_SECONDS = 20000
 
-    increaseRank(index) {
-        this.setBelt(++index)
-    }
+let getRandomNumber = (maxNumber) => {
+    return Math.floor(Math.random() * maxNumber) + 1
 }
 
+let getScore = () => getRandomNumber(MAX_SCORE)
 
 let fight = (ins) => {
-    const start = 1
-    const max = 20
-    setInterval()
-    let score = Math.floor(Math.random()*max) + 1
-}
-// 3. Create an instance of Karateka with your name
-// 4. Create a fight function that takes your instance of Karateka as a parameter
-// Within the fight function, every second, for a maximum of 20 seconds, draw 
-// a random score between 1 and 10
-// 5. If the score is higher than 8, upgrade the belt of your Karateka instance, 
-// by calling the increaseRank function 
-// 6. Every second, within the fight, log the score and the instance of Karateka
+    let interval = setInterval(() => {
+        let score = getScore()
+        ins.judge(score)
+        console.log('Score: ', score)
+        console.log(ins)
+    }, INTERVAL_SECOND)
 
-// score: 2
-// {name: 'Tony', belt: 'white'}
-// score: 4
-// {name: 'Tony', belt: 'white'}
-// score: 1
-// {name: 'Tony', belt: 'white'}
-// score: 10
-// {name: 'Tony', belt: 'yellow'}
-// score: 6
-// {name: 'Tony', belt: 'yellow'}
-// score: 9
-// {name: 'Tony', belt: 'orange'}
-// score: 10
-// {name: 'Tony', belt: 'green'}
-// score: 2
-// {name: 'Tony', belt: 'green'}
-// score: 5
-// {name: 'Tony', belt: 'green'}
-// score: 4
-// {name: 'Tony', belt: 'green'}
-// score: 3
-// {name: 'Tony', belt: 'green'}
-// score: 10
-// {name: 'Tony', belt: 'blue'}
-// score: 2
-// {name: 'Tony', belt: 'blue'}
-// score: 10
-// {name: 'Tony', belt: 'brown'}
-// score: 9
-// {name: 'Tony', belt: 'black'}
-// score: 5
-// {name: 'Tony', belt: 'black'}
-// score: 5
-// {name: 'Tony', belt: 'black'}
-// score: 2
-// {name: 'Tony', belt: 'black'}
-// score: 7
-// {name: 'Tony', belt: 'black'}
-// score: 8
-// {name: 'Tony', belt: 'black'}
-  
-  
+    setTimeout(() => {
+        clearInterval(interval)
+    }, MAX_TRAINING_SECONDS)
+}
+
+let fighter = new Karateka('Heeseok')
+console.log('#020503', fighter)
+fight(fighter)
+
+
   // #020504
   let fruitNames = ['apples', 'bananas', 'bread', 'cookies', 'broccoli', 'onions']
   let prices = [20, 12, 24, 53, 32, 15]
