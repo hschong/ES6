@@ -34,9 +34,14 @@ class Employee {
     }
 }
 
+let makeEmployeeInstance = (index) => {
+    let employee = new Employee(names[index], jobs[index])
+    return employee
+}
+
 let makeEmployeeArray = (names, jobs) => {
-    return names.map((name, index) => {
-        employee = new Employee(name, jobs[index])
+    return employees = names.map((name, index) => {
+        return makeEmployeeInstance(index)
     })
 }
 
