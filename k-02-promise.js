@@ -32,7 +32,6 @@ let haveShower=(sec)=>{
     })
 }
 
-// async let toDoInMorning=()=>{
 async function toDoInMorning() {
     console.log(new Date().toString() + ' <===> #020601' + ': toDoInMorning()')
     await getUp(1).then(result=>console.log(result))
@@ -68,13 +67,13 @@ let makeToast=(sec)=>{
 
 let makeBacon=(sec)=>{
     return new Promise((resolve, reject)=>{
-        setTimeout(() => {
+        setTimeout(()=>{
             resolve(new Date().toString() + ' <===> #020602' + `: make bacon after ${sec} second(s)`)
         }, sec*1000);
     })
 }
 
-async function makeBreakfast() {
+let makeBreakfast=()=>{
     let responses = []
     responses.push(makeCoffee(10))
     responses.push(makeEggs(5))
@@ -89,7 +88,7 @@ async function makeBreakfast() {
 let startSpeedy=(sec)=>{
     return new Promise((resolve, reject)=>{
         console.log(`#020603 <===> Speedy is ${sec} second(s).`)
-        setTimeout(() => {
+        setTimeout(()=>{
             resolve(new Date().toString() + ' <===> #020603' + `: The winner is Speedy!`)
         }, sec*1000)
     })
@@ -98,7 +97,7 @@ let startSpeedy=(sec)=>{
 let startJackpot=(sec)=>{
     return new Promise((resolve, reject)=>{
         console.log(`#020603 <===> Jackpot is ${sec} second(s).`)
-        setTimeout(() => {
+        setTimeout(()=>{
             resolve(new Date().toString() + ' <===> #020603' + `: The winner is Jackpot!`)
         }, sec*1000)
     })
@@ -107,14 +106,14 @@ let startJackpot=(sec)=>{
 let startRed=(sec)=>{
     return new Promise((resolve, reject)=>{
         console.log(`#020603 <===> Red is ${sec} second(s).`)
-        setTimeout(() => {
+        setTimeout(()=>{
             resolve(new Date().toString() + ' <===> #020603' + `: The winner is Red!`)
         }, sec*1000)
     })
 }
 
 let getRandomNumber=()=>Math.random()*4+1
-async function race() {
+let race=()=>{
     let responses = []
     console.log(new Date().toString() + ' <===> #020603' + ': race()')
     responses.push(startSpeedy(getRandomNumber()))
