@@ -1,8 +1,5 @@
 // Classes
 // #020501
-// 1. Create a class Car
-// 2. Create a buildCar function that takes make, model and color and returns 
-// a new instance of Car
 class Car {
     constructor (make, model, color) {
         this.make = make
@@ -11,21 +8,13 @@ class Car {
     }
 }
 
-let buildCar = () => {
-    return new Car('Benz', 'E300', 'White')
-}
+let buildCar = () => new Car('Benz', 'E300', 'White')
 console.log('#020501', buildCar())
 
   
 // #020502
 let names = ['Alice', 'Bernard', 'Catherine', 'David']
 let jobs = ['Accountant', 'Biz Manager', 'Cleaner', 'Director']
-// [
-//   {name:'Alice', job:'Accountant'},
-//   {name:'Bernard', job:'Biz Manager'},
-//   {name:'Catherine', job:'Cleaner'},
-//   {name:'David', job:'Director'}
-// ]
 
 class Employee {
     constructor(name, job) {
@@ -34,16 +23,9 @@ class Employee {
     }
 }
 
-let makeEmployeeInstance = (index) => {
-    let employee = new Employee(names[index], jobs[index])
-    return employee
-}
-
-let makeEmployeeArray = (names, jobs) => {
-    return names.map((name, index) => {
-        return makeEmployeeInstance(index)
-    })
-}
+let makeEmployeeInstance = (index) => employee = new Employee(names[index], jobs[index])
+let makeEmployeeArray = (names, jobs) => names.map(
+    (name, index) => makeEmployeeInstance(index))
 
 console.log('#020502', makeEmployeeArray(names, jobs))
 
@@ -64,7 +46,7 @@ class Karateka {
         this.belt = belts[index]
     }
 
-    isBlackBelt() {
+    hasBlackBelt() {
         return this.getBelt() === 'black' ? true : false
     }
 
@@ -74,7 +56,7 @@ class Karateka {
     
     judge(score) {
         if (score > UPGRADE_SCORE) {
-            if (this.isBlackBelt() === false) {
+            if (this.hasBlackBelt() === false) {
                 this.increaseRank(this.getIndexOfBelt())
             }
         }
@@ -90,10 +72,7 @@ const MAX_SCORE = 10
 const INTERVAL_SECONDS = 1000
 const MAX_FIGHT_SECONDS = 20000
 
-let getRandomNumber = (maxNumber) => {
-    return Math.floor(Math.random() * maxNumber) + 1
-}
-
+let getRandomNumber = max => Math.floor(Math.random() * max) + 1
 let getScore = () => getRandomNumber(MAX_SCORE)
 
 let logResult = () => {
@@ -128,7 +107,7 @@ class Product {
     }
 
     applyDiscount(discount) {
-        return this.price = this.price - (this.price * discount / 100)
+        this.price = this.price - (this.price * discount / 100)
     }
 }
 
@@ -137,26 +116,29 @@ class Receipt {
         this.products = products
     }
 
-    calcTotal(products) {
-        return products.reduce((total, element) => total + element.price)
+    calcTotal() {
+        let total = 0
+        this.products.forEach(product => total += product.price)
+        return total
     }
 }
 
-let newProductAfterDiscount = (name, index) => {
+let makeProductListAfterDiscounting = () => fruitNames.map((name, index) => {
     product = new Product(name, prices[index])
-    product.price = product.applyDiscount(discounts[index])
+    product.applyDiscount(discounts[index])
     return product
-}
-
-let getReceipt = (fruitNames, prices, discounts) => {
-    return receipt = fruitNames.map((name, index) => {
-        return newProductAfterDiscount(name, index)
-    })
-}
-
-getReceipt(fruitNames, prices, discounts).forEach(element => {
-    console.log(element)
 })
+
+let logReceipt = ()=> {
+    console.log('#020504')
+    receipt = new Receipt(makeProductListAfterDiscounting())
+    console.log('Receipt: [')
+    makeProductListAfterDiscounting().forEach(product => console.log(product))
+    console.log(']')
+    console.log(`Total: ${receipt.calcTotal()}`)
+}
+
+logReceipt()
 
 // 5. Create a function getReceipt() that takes names, prices and discounts as parameters, then
 //   i.    Creates objects with name and price using the Product class as factory
