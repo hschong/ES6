@@ -47,11 +47,53 @@ toDoInMorning()
 
 // #020602
 // Create a function makeCoffee that resolves with coffee after 10 seconds.
+let makeCoffee=(sec)=>{
+    return new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            resolve(new Date().toISOString() + `: make coffee after ${sec} second(s)`)
+        }, sec*1000)
+    })
+}
+
 // Create a function makeEggs that resolves with eggs after 5 seconds.
+let makeEggs=(sec)=>{
+    return new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            resolve(new Date().toISOString() + `make eggs after ${sec} second(s)`)
+        }, sec*1000)
+    })
+} 
+
 // Create a function makeToast that resolves with toast after 6 seconds.
+let makeToast=(sec)=>{
+    return new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            resolve(new Date().toISOString() + `make toast after ${sec} second(s)`)
+        }, sec*1000)
+    })
+}
+
 // Create a function makeBacon that resolves with bacon after 8 seconds.
-// Call all the functions at once and when all have resolved, log a string containing an array with all the responses.
-// Breakfast is ready: ['coffee', 'eggs', 'toast', 'bacon']
+let makeBacon=(sec)=>{
+    return new Promise((resolve, reject)=>{
+        setTimeout(() => {
+            resolve(new Date().toISOString() + `make bacon after ${sec} second(s)`)
+        }, sec*1000);
+    })
+}
+
+async function makeBreakfast() {
+    let responses = []
+    responses.push(makeCoffee(10))
+    responses.push(makeEggs(5))
+    responses.push(makeToast(6))
+    responses.push(makeBacon(8))
+    console.log('#020602 <===>')
+    console.log(new Date().toISOString())
+    Promise.all(responses).then(result=>console.log(responses))
+}
+
+makeBreakfast()
 
 
 // #020603
