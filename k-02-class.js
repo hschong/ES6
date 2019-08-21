@@ -64,7 +64,7 @@ class Karateka {
         this.belt = belts[index]
     }
 
-    isYourBeltBlack() {
+    isBlackBelt() {
         return this.getBelt() === 'black' ? true : false
     }
 
@@ -74,7 +74,7 @@ class Karateka {
     
     judge(score) {
         if (score > UPGRADE_SCORE) {
-            if (this.isYourBeltBlack() === false) {
+            if (this.isBlackBelt() === false) {
                 this.increaseRank(this.getIndexOfBelt())
             }
         }
