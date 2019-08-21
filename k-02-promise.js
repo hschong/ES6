@@ -3,7 +3,7 @@
 let brushTeeth=(sec)=>{
     return new Promise((resolve, reject)=>{
         setTimeout(()=>{
-            resolve(new Date().toISOString() + `: brush teeth after ${sec} second(s).`)
+            resolve(new Date().toString() + ' <===> #020601' +  `: brush teeth after ${sec} second(s).`)
         }, sec * 1000)
     })
 }
@@ -11,7 +11,7 @@ let brushTeeth=(sec)=>{
 let getUp=(sec)=>{
     return new Promise((resolve, reject)=>{
         setTimeout(()=>{
-            resolve(new Date().toISOString() + `: getUp ${sec} second(s).`)
+            resolve(new Date().toString() + ' <===> #020601' +  `: getUp after ${sec} second(s).`)
         }, sec*1000)
     })
 }
@@ -19,7 +19,7 @@ let getUp=(sec)=>{
 let haveBreakfast=(sec)=>{
     return new Promise((resolve, reject)=>{
         setTimeout(()=>{
-            resolve(new Date().toISOString() + `: have breakfast after ${sec} second(s). Time: `)
+            resolve(new Date().toString() + ' <===> #020601' + `: have breakfast after ${sec} second(s).`)
         }, sec*1000)
     })
 }
@@ -27,57 +27,49 @@ let haveBreakfast=(sec)=>{
 let haveShower=(sec)=>{
     return new Promise((resolve, reject)=>{
         setTimeout(()=>{
-            resolve(new Date().toISOString() + `: take shower after ${sec} second(s).`)
+            resolve(new Date().toString() +  ' <===> #020601' + `: take shower after ${sec} second(s).`)
         }, sec*1000)
     })
 }
 
 // async let toDoInMorning=()=>{
 async function toDoInMorning() {
-    console.log('#020601 <===>')
-    console.log(new Date().toISOString())
+    console.log(new Date().toString() + ' <===> #020601' + ': toDoInMorning()')
     await getUp(1).then(result=>console.log(result))
     await haveShower(2).then(result=>console.log(result))
     await haveBreakfast(2).then(result=>console.log(result))
     await brushTeeth(1).then(result=>console.log(result))
 }
 
-toDoInMorning()
-
-
 // #020602
-// Create a function makeCoffee that resolves with coffee after 10 seconds.
 let makeCoffee=(sec)=>{
     return new Promise((resolve, reject)=>{
         setTimeout(()=>{
-            resolve(new Date().toISOString() + `: make coffee after ${sec} second(s)`)
+            resolve(new Date().toString() + ' <===> #020602' + `: make coffee after ${sec} second(s)`)
         }, sec*1000)
     })
 }
 
-// Create a function makeEggs that resolves with eggs after 5 seconds.
 let makeEggs=(sec)=>{
     return new Promise((resolve, reject)=>{
         setTimeout(()=>{
-            resolve(new Date().toISOString() + `make eggs after ${sec} second(s)`)
+            resolve(new Date().toString() + ' <===> #020602' + `: make eggs after ${sec} second(s)`)
         }, sec*1000)
     })
 } 
 
-// Create a function makeToast that resolves with toast after 6 seconds.
 let makeToast=(sec)=>{
     return new Promise((resolve, reject)=>{
         setTimeout(()=>{
-            resolve(new Date().toISOString() + `make toast after ${sec} second(s)`)
+            resolve(new Date().toString() + ' <===> #020602' + `: make toast after ${sec} second(s)`)
         }, sec*1000)
     })
 }
 
-// Create a function makeBacon that resolves with bacon after 8 seconds.
 let makeBacon=(sec)=>{
     return new Promise((resolve, reject)=>{
         setTimeout(() => {
-            resolve(new Date().toISOString() + `make bacon after ${sec} second(s)`)
+            resolve(new Date().toString() + ' <===> #020602' + `: make bacon after ${sec} second(s)`)
         }, sec*1000);
     })
 }
@@ -88,15 +80,72 @@ async function makeBreakfast() {
     responses.push(makeEggs(5))
     responses.push(makeToast(6))
     responses.push(makeBacon(8))
-    console.log('#020602 <===>')
-    console.log(new Date().toISOString())
+    console.log(new Date().toString() + ' <===> #020602' + ': makeBreakfast()')
     Promise.all(responses).then(result=>console.log(responses))
 }
 
-makeBreakfast()
-
 
 // #020603
-// Create 3 racing horses: "Speedy", "Jackpot" and "Red". Each one will finish the race and resolve with its name after a random time between 1 and 4 seconds.
-// Start the race and log the winning horse:
-// The winner is Jackpot!
+let startSpeedy=(sec)=>{
+    return new Promise((resolve, reject)=>{
+        console.log(`#020603 <===> Speedy is ${sec} second(s).`)
+        setTimeout(() => {
+            resolve(new Date().toString() + ' <===> #020603' + `: The winner is Speedy!`)
+        }, sec*1000)
+    })
+}
+
+let startJackpot=(sec)=>{
+    return new Promise((resolve, reject)=>{
+        console.log(`#020603 <===> Jackpot is ${sec} second(s).`)
+        setTimeout(() => {
+            resolve(new Date().toString() + ' <===> #020603' + `: The winner is Jackpot!`)
+        }, sec*1000)
+    })
+}
+
+let startRed=(sec)=>{
+    return new Promise((resolve, reject)=>{
+        console.log(`#020603 <===> Red is ${sec} second(s).`)
+        setTimeout(() => {
+            resolve(new Date().toString() + ' <===> #020603' + `: The winner is Red!`)
+        }, sec*1000)
+    })
+}
+
+let getRandomNumber=()=>Math.random()*4+1
+async function race() {
+    let responses = []
+    console.log(new Date().toString() + ' <===> #020603' + ': race()')
+    responses.push(startSpeedy(getRandomNumber()))
+    responses.push(startJackpot(getRandomNumber()))
+    responses.push(startRed(getRandomNumber()))
+    Promise.race(responses).then(result=>console.log(result))
+}
+
+async function startMyAsyncFunc() {
+    await toDoInMorning()
+    await makeBreakfast()
+    await race()
+}
+
+startMyAsyncFunc()
+// 01:01:56 GMT+0700 (Indochina Time) <===> #020601: getUp after 1 second(s).
+// 01:01:58 GMT+0700 (Indochina Time) <===> #020601: take shower after 2 second(s).
+// 01:02:00 GMT+0700 (Indochina Time) <===> #020601: have breakfast after 2 second(s).
+// 01:01:55 GMT+0700 (Indochina Time) <===> #020601: toDoInMorning()
+// 01:02:01 GMT+0700 (Indochina Time) <===> #020601: brush teeth after 1 second(s).
+// 01:02:01 GMT+0700 (Indochina Time) <===> #020602: makeBreakfast()
+// 01:02:01 GMT+0700 (Indochina Time) <===> #020603: race()
+// #020603 <===> Speedy is 1.0607399255152226 second(s).
+// #020603 <===> Jackpot is 3.9184682542379115 second(s).
+// #020603 <===> Red is 2.1645235668818312 second(s).
+// 01:02:02 GMT+0700 (Indochina Time) <===> #020603: The winner is Speedy!
+// [ Promise {
+//     '01:02:11 GMT+0700 (Indochina Time) <===> #020602: make coffee after 10 second(s)' },
+//   Promise {
+//     '01:02:06 GMT+0700 (Indochina Time) <===> #020602: make eggs after 5 second(s)' },
+//   Promise {
+//     '01:02:07 GMT+0700 (Indochina Time) <===> #020602: make toast after 6 second(s)' },
+//   Promise {
+//     '01:02:09 GMT+0700 (Indochina Time) <===> #020602: make bacon after 8 second(s)' } ]
