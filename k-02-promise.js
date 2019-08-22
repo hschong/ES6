@@ -4,7 +4,7 @@ let brushTeeth=(sec)=>{
     return new Promise((resolve, reject)=>{
         setTimeout(()=>{
             resolve(new Date().toString() + ' <===> #020601' +  `: brush teeth after ${sec} second(s).`)
-        }, sec * 1000)
+        }, sec*1000)
     })
 }
 
@@ -80,7 +80,7 @@ let makeBreakfast=()=>{
     responses.push(makeToast(6))
     responses.push(makeBacon(8))
     console.log(new Date().toString() + ' <===> #020602' + ': makeBreakfast()')
-    Promise.all(responses).then(result=>console.log(responses))
+    return Promise.all(responses).then(result=>console.log(responses))
 }
 
 
@@ -119,32 +119,15 @@ let race=()=>{
     responses.push(startSpeedy(getRandomNumber()))
     responses.push(startJackpot(getRandomNumber()))
     responses.push(startRed(getRandomNumber()))
-    Promise.race(responses).then(result=>console.log(result))
+    return Promise.race(responses).then(result=>console.log(result))
 }
 
 async function startMyAsyncFunc() {
     await toDoInMorning()
     await makeBreakfast()
     await race()
+    await toDoInMorning()
 }
 
+// let startMyAsyncFunc=()=>toDoInMorning().then(result=>makeBreakfast().then(()=>race()))
 startMyAsyncFunc()
-// 01:01:56 GMT+0700 (Indochina Time) <===> #020601: getUp after 1 second(s).
-// 01:01:58 GMT+0700 (Indochina Time) <===> #020601: take shower after 2 second(s).
-// 01:02:00 GMT+0700 (Indochina Time) <===> #020601: have breakfast after 2 second(s).
-// 01:01:55 GMT+0700 (Indochina Time) <===> #020601: toDoInMorning()
-// 01:02:01 GMT+0700 (Indochina Time) <===> #020601: brush teeth after 1 second(s).
-// 01:02:01 GMT+0700 (Indochina Time) <===> #020602: makeBreakfast()
-// 01:02:01 GMT+0700 (Indochina Time) <===> #020603: race()
-// #020603 <===> Speedy is 1.0607399255152226 second(s).
-// #020603 <===> Jackpot is 3.9184682542379115 second(s).
-// #020603 <===> Red is 2.1645235668818312 second(s).
-// 01:02:02 GMT+0700 (Indochina Time) <===> #020603: The winner is Speedy!
-// [ Promise {
-//     '01:02:11 GMT+0700 (Indochina Time) <===> #020602: make coffee after 10 second(s)' },
-//   Promise {
-//     '01:02:06 GMT+0700 (Indochina Time) <===> #020602: make eggs after 5 second(s)' },
-//   Promise {
-//     '01:02:07 GMT+0700 (Indochina Time) <===> #020602: make toast after 6 second(s)' },
-//   Promise {
-//     '01:02:09 GMT+0700 (Indochina Time) <===> #020602: make bacon after 8 second(s)' } ]
