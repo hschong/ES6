@@ -123,7 +123,7 @@ class Receipt {
     }
 }
 
-let makeProductListAfterDiscounting = () => fruitNames.map((name, index) => {
+let makeNewProductsAfterDiscounting = () => fruitNames.map((name, index) => {
     product = new Product(name, prices[index])
     product.applyDiscount(discounts[index])
     return product
@@ -131,42 +131,12 @@ let makeProductListAfterDiscounting = () => fruitNames.map((name, index) => {
 
 let logReceipt = ()=> {
     console.log('#020504')
-    receipt = new Receipt(makeProductListAfterDiscounting())
     console.log('Receipt: [')
-    makeProductListAfterDiscounting().forEach(product => console.log(product))
+    newProducts = makeNewProductsAfterDiscounting()
+    receipt = new Receipt(newProducts)
+    newProducts.forEach(product => console.log(product))
     console.log(']')
     console.log(`Total: ${receipt.calcTotal()}`)
 }
 
 logReceipt()
-
-// 5. Create a function getReceipt() that takes names, prices and discounts as parameters, then
-//   i.    Creates objects with name and price using the Product class as factory
-//   ii.   Applies the discounts using the applyDiscount() function within products
-//   iii.  Creates a receipt using the Receipt class
-//   iv.   logs the receipt and the total using the calcTotal function within Receipt
-
-//   Receipt: [
-//   {name: 'apples', price: 20},
-//   {name: 'bananas', price: 12},
-//   {name: 'bread', price: 21.6},
-//   {name: 'cookies', price: 39.75},
-//   {name: 'broccoli', price: 32},
-//   {name: 'onions', price: 14.25}
-// ]
-// Total: 139.6
-
-
-// 🤓 Advanced
-// Log the receipt in this format:
-
-// ----------------------
-// | apples   |  $20.00 |
-// | bananas  |  $12.00 |
-// | bread    |  $21.60 |
-// | cookies  |  $39.75 |
-// | broccoli |  $32.00 |
-// | onions   |  $14.25 |
-// ----------------------
-// | Total    | $139.60 |
-// ----------------------
