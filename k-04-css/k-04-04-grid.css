@@ -1,0 +1,96 @@
+Grid
+
+#040401
+
+Using CSS grid, style the following so that the 2 div elements with a class of product sit side by side and each takes 50% of the document's width.
+
+<div class="wrap">
+  <div class="product">
+    Product 1
+  </div>
+  <div class="product">
+    Product 2
+  </div>
+</div>
+#040402
+
+Style the following so that the 2 div elements with a class of product sit side by side and each takes 25% of the document's width.
+
+<div class="wrap">
+  <div class="product">
+    Product 1
+  </div>
+  <div class="product">
+    Product 2
+  </div>
+</div>
+#040403
+
+Style the following so that:
+
+the 2 div elements sit side by side
+the div element with a class of content is 4 times wider than the element with a class of sidebar
+<div class="wrap">
+  <div class="sidebar">
+    Sidebar
+  </div>
+  <div class="content">
+    Content
+  </div>
+</div>
+#040404
+
+Style the following so that:
+
+all div elements sit side by side
+the div element with a class of content is 6 times wider than the element with a class of sidebar and 2 times wider than the element with a class of ads
+<div class="wrap">
+  <div class="sidebar">
+    Sidebar
+  </div>
+  <div class="content">
+    Content
+  </div>
+  <div class="ads">
+    Ads
+  </div>
+</div>
+#040405
+
+Style the following so that:
+
+all div elements sit side by side
+all div elements have the same width
+all div elements combined are equal to the document's width
+there is a 20 pixels gap between one div element and another
+<div class="column">
+  1
+</div>
+<div class="column">
+  2
+</div>
+<div class="column">
+  3
+</div>
+#040406
+
+Using HTML and CSS, achieve the following layout:
+
+
+
+#040407
+
+Using HTML and CSS, achieve the following layout:
+
+
+
+#040408
+
+Using HTML and CSS, achieve the following layout:
+
+
+
+#040409
+
+Using HTML and CSS, achieve the following layout:
+

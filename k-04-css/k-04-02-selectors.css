@@ -1,0 +1,49 @@
+Selectors
+
+#040201
+
+Change the color property of the p tag to red
+
+<p>Make me red</p>
+#040202
+
+Change the color property of all tags with a class of title to red
+
+<h1 class="title">Make me red</h1>
+<div>
+  <h3 class="title">Make me red</h3>
+</div>
+#040203
+
+Change the color property of only the h3 tag with a class of title to red
+
+<h1 class="title">Page Title</h1>
+<h3>Subtitle</h3>
+<div>
+  <h3 class="title">Make me red</h3>
+</div>
+#040204
+
+Change the property color of only the h4 tag that is inside the div tag to red
+
+<h1 class="title">Page Title</h1>
+<h4>Subtitle</h4>
+<div>
+  <h3 class="title">Product Title</h3>
+  <h4>Make me red</h4>
+</div>
+#040205
+
+Change the property color of only the h3 tag with an id of main to red
+
+<h1 class="title">Page Title</h1>
+<h3 id="main">Make me red</h3>
+<h3>Description</h3>
+#040206
+
+Change the property color of only the span tag that is a direct child of the div tag to red
+
+<div>
+  <span>Make me red</span>
+  <p>Once upon a time <span>in a galaxy far far away</span></p>
+</div>
