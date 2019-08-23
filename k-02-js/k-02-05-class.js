@@ -132,9 +132,8 @@ let makeNewProductsAfterDiscounting = () => fruitNames.map((name, index) => {
 let logReceipt = ()=> {
     console.log('#020504')
     console.log('Receipt: [')
-    newProducts = makeNewProductsAfterDiscounting()
-    receipt = new Receipt(newProducts)
-    newProducts.forEach(product => console.log(product))
+    receipt = new Receipt(makeNewProductsAfterDiscounting())
+    receipt.products.forEach(product => console.log(product))
     console.log(']')
     console.log(`Total: ${receipt.calcTotal()}`)
 }
