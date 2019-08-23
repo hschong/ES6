@@ -1,4 +1,3 @@
-
 // Algorithms
 let phrase = 'JavaScript is the best'
 let prices = ['$22', '€99', '$75', '£80', '€43', '$22']
