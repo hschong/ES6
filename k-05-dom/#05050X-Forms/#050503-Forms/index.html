@@ -16,11 +16,10 @@
       add the success class to it (thus turning its content green)
       If not, show the message Sorry, please provide a valid email address in the element with 
       an id of message and add the error class to it (thus turning its content red) -->
-    <form>
+    <form onsubmit="checkEmailAdress(event)">
       <input type="text" id="email" />
       <span id="message"></span>
       <button>Sign up</button>
     </form>
-    .success { color: green; } .error { color: red; }
   </body>
 </html>

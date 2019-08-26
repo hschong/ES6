@@ -8,13 +8,23 @@
     <script src="index.js" defer></script>
   </head>
   <body>
-      <!-- #050502
-      Given the below html, change the content of the element with an id of total to the sum of 
-      the values typed inside the 2 input fields. 
-      Make sure the total is displayed in real-time as the values are typed in. -->
-      
-      <input type="number" class="number" placeholder="Number 1">
-      <input type="number" class="number" placeholder="Number 2">
-      <label>Total: <span id="total"></div></label>
+    <!-- #050502
+    Given the below html, change the content of the element with an id of total to the sum of 
+    the values typed inside the 2 input fields. 
+    Make sure the total is displayed in real-time as the values are typed in. -->
+
+    <input
+      type="number"
+      class="number"
+      placeholder="Number 1"
+      onkeyup="getTotal()"
+    />
+    <input
+      type="number"
+      class="number"
+      placeholder="Number 2"
+      onkeyup="getTotal()"
+    />
+    <label>Total: <span id="total"></span></label>
   </body>
 </html>

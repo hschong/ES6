@@ -20,13 +20,12 @@
       Checking must happen in real-time as you type into the fields. -->
 
     <div id="name">
-      <input type="text" />
+      <input type="text" onkeyup="checkNameLength(this)" />
       <span class="error"></span>
     </div>
     <div id="password">
-      <input type="password" />
+      <input type="password" onkeyup="checkPasswordLength(this)" />
       <span class="error"></span>
     </div>
-    .error { color: red; }
   </body>
 </html>
