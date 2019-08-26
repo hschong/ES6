@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Forms #050503</title>
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <!-- #050503
+      Given the below html and css, check that the field with an id of email has an @ sign 
+      when the form is submitted.
+      
+      If so, show the message Thank you for signing up in the element with an id of message and
+      add the success class to it (thus turning its content green)
+      If not, show the message Sorry, please provide a valid email address in the element with 
+      an id of message and add the error class to it (thus turning its content red) -->
+    <form>
+      <input type="text" id="email" />
+      <span id="message"></span>
+      <button>Sign up</button>
+    </form>
+    .success { color: green; } .error { color: red; }
+  </body>
+</html>

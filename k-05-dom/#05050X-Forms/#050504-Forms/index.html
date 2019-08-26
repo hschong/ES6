@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Forms #050504</title>
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <!-- #050504
+      Given the below html and css, check that:
+      
+      the field inside the element with an id of name has a length greater than 2 characters. 
+      If not, show the message At least 3 characters in the element with a class of 
+      error corresponding to this field.
+      the field inside the element with an id of password has a length greater than 8 characters. 
+      If not, show the message At least 9 characters in the element with a class of 
+      error corresponding to this field.
+      Checking must happen in real-time as you type into the fields. -->
+
+    <div id="name">
+      <input type="text" />
+      <span class="error"></span>
+    </div>
+    <div id="password">
+      <input type="password" />
+      <span class="error"></span>
+    </div>
+    .error { color: red; }
+  </body>
+</html>
