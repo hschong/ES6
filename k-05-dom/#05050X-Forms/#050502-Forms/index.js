@@ -7,7 +7,7 @@
 // <input type="number" class="number" placeholder="Number 2">
 // <label>Total: <span id="total"></span></label>
 
-const getTotal = () => {
+let refreshTotal = () => {
   let total = 0;
   Array.from(document.getElementsByClassName('number')).forEach(
     e => (total += Number(e.value))
