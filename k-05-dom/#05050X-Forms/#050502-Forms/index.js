@@ -10,5 +10,5 @@
 let refreshTotal = () => {
   document.getElementById('total').innerHTML = Array.from(
     document.getElementsByClassName('number')
-  ).reduce((a, b) => a + b);
+  ).reduce((a, b) => Number(a.value) + Number(b.value));
 };
