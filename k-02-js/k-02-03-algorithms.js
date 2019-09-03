@@ -6,14 +6,51 @@ let names = ['anna', 'john', 'bob', 'frank'];
 // #020301
 // Flip each word in phrase and return a single string
 // 'tpircSavaJ si eht tseb'
-let getReverseString = str =>
+let getReverseString1 = str =>
   str
     .split('')
     .reverse()
     .join('');
+
+let getReverseString2 = str => {
+  if (typeof str != 'string') console.log('this is not good!');
+
+  if (str === '') {
+    return '';
+  } else {
+    return getReverseString2(str.substr(1)) + str.charAt(0);
+  }
+};
+
+let getReverseString3 = str => {
+  if (typeof str != 'string') {
+    console.log('this is not good!');
+    return undefined;
+  }
+
+  let returnValue;
+  switch (str.length) {
+    case 0:
+      returnValue = '';
+      break;
+    case 1:
+      returnValue = str;
+      break;
+    default:
+      returnValue =
+        str.charAt(str.length - 1) +
+        getReverseString3(str.slice(1, -1)) +
+        str.charAt(0);
+  }
+
+  return returnValue;
+};
+
 let flipWordInPhrase = phrase => {
   const words = phrase.split(' ');
-  const result = words.map(getReverseString);
+  // const result = words.map(getReverseString1);
+  // const result = words.map(getReverseString2);
+  const result = words.map(getReverseString3);
 
   return result;
 };
@@ -43,10 +80,22 @@ console.log('#020302', getNewPrices(prices));
 // that reads exactly the same from left to right and backwards).
 // ['anna', 'bob']
 let palindromes = [];
-let isPalindrome = str => (str === getReverseString(str) ? true : false);
+let isPalindrome1 = str => (str === getReverseString3(str) ? true : false);
+let isPalindrome2 = str => {
+  if (str.length === 0 || str.length === 1) {
+    return true;
+  }
+
+  if (str.charAt(0) === str.charAt(str.length - 1)) {
+    return isPalindrome2(str.slice(1, str.length - 1));
+  } else {
+    return false;
+  }
+};
+
 let getPalindromes = array => {
   array.forEach(str => {
-    if (isPalindrome(str) === true) {
+    if (isPalindrome2(str) === true) {
       palindromes.push(str);
     }
   });
