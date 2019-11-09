@@ -1,2 +1,2 @@
-# Tortuga
-Practice for Full Stack Development course.
+# Vanila JavaScript
+Practice for ES6+.
