@@ -224,16 +224,3 @@ console.log('20116. ');
 // create a function that returns an array with separate denominations needed to
 // reach the amount passed into the function. Optimize for higher denominations.
 // 27.58 => [10, 10, 5, 1, 1, 0.5, 0.05, 0.01, 0.01, 0.01]
-
-// for in
-for (const key in object) {
-  if (object.hasOwnProperty(key)) {
-    const element = object[key];
-    console.log(element);
-  }
-}
-
-// for of
-for (const iterator of object) {
-  console.log(iterator);
-}
