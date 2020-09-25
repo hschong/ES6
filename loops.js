@@ -5,27 +5,30 @@ let mix = [5, 'David', { name: 'Ella' }, 23, 'Frank'];
 // .forEach() => return value: undefined
 // 020101. Create a function that logs each number individually
 console.log('20101. ');
-let logElements = array => array.forEach(e => console.log(e));
+let logElements = (array) => array.forEach((e) => console.log(e));
 logElements(numbers);
 
 // 020102. Create a function that logs each student's name
 console.log('20102. ');
-let logNames = array => array.forEach(e => console.log(e.name));
+let logNames = (array) => array.forEach((e) => console.log(e.name));
 logNames(students);
 
 // .map() => return value: a new array
 // 020103. Create a function that adds 1 to each number and returns a new array
 // [2, 91, 79, 4, 23, 188, 22]
-let plusOne = e => ++e;
+let plusOne = (e) => ++e;
 let makeNewArray = (array, func) => array.map(func);
 let newNumbers = makeNewArray(numbers, plusOne);
 // console.log('#20103 ===> ', newNumbers)
-console.log('#20103 ===> ', numbers.map(e => e + 1));
+console.log(
+  '#20103 ===> ',
+  numbers.map((e) => e + 1)
+);
 
 // 020104. Create a function that returns an array of  all the students' names
 // ['Albert', 'Bob', 'Claudia']
 console.log('20104. ');
-let getName = e => e.name;
+let getName = (e) => e.name;
 let studentNames = makeNewArray(students, getName);
 console.log(studentNames);
 
@@ -43,7 +46,7 @@ let isGreaterThanGivenNumberOrEqual = (e, givenNumber) => {
 };
 
 let makeNewFilteredArray = (array, filter, func) =>
-  array.filter(e => func(e, filter));
+  array.filter((e) => func(e, filter));
 let numbersGreaterThan22 = makeNewFilteredArray(
   newNumbers,
   22,
@@ -92,7 +95,7 @@ console.log(nameLengthGreaterThan6);
 // 020108. Create a function that returns an array with only strings from mix
 // ['David', 'Frank']
 console.log('20108. ');
-let getStringOnly = array => array.filter(e => typeof e === 'string');
+let getStringOnly = (array) => array.filter((e) => typeof e === 'string');
 let stringOnly = getStringOnly(mix);
 console.log(stringOnly);
 
@@ -101,7 +104,7 @@ console.log(stringOnly);
 // 187
 console.log('20109. ');
 let find1stNumberGreaterThanGivenNumber = (array, givenNumber) =>
-  array.find(e => e > givenNumber);
+  array.find((e) => e > givenNumber);
 console.log(find1stNumberGreaterThanGivenNumber(numbers, 100));
 
 // 020110. Create a function that returns the first student whose name is Bob
@@ -109,22 +112,22 @@ console.log(find1stNumberGreaterThanGivenNumber(numbers, 100));
 // 	name: 'Bob'
 // }
 console.log('20110. ');
-let findNameInArray = (array, name) => array.find(e => e.name === name);
+let findNameInArray = (array, name) => array.find((e) => e.name === name);
 console.log(findNameInArray(students, 'Bob'));
 
 // .reduce() => return value: tthe single value that results from the reduction.
 // 020111. Create a function that returns the sum of all numbers using reduce()
 // 402
 console.log('20111. ');
-let getSumOfAllNumbers = array => array.reduce((acc, cur) => acc + cur);
+let getSumOfAllNumbers = (array) => array.reduce((acc, cur) => acc + cur);
 console.log(getSumOfAllNumbers(numbers));
 
 // 020112. Create a function that returns the sum of all numbers without using reduce()
 // 402
 console.log('20112. ');
-let getSumOfAllElements = array => {
+let getSumOfAllElements = (array) => {
   let result = 0;
-  array.forEach(e => (result += e));
+  array.forEach((e) => (result += e));
   return result;
 };
 console.log(getSumOfAllElements(numbers));
@@ -132,14 +135,14 @@ console.log(getSumOfAllElements(numbers));
 // 020113. Create a function that returns the difference of all numbers, using reduce()
 //  -400
 console.log('20113. ');
-let getDifferenceOfAllElements = array =>
+let getDifferenceOfAllElements = (array) =>
   array.reduce((prevValue, curValue) => prevValue - curValue);
 console.log(getDifferenceOfAllElements(numbers));
 
 // 020114. Create a function that returns the product of all numbers
 // 1819457640
 console.log('20114. ');
-let getProductOfAllElements = array =>
+let getProductOfAllElements = (array) =>
   array.reduce((prevValue, curValue) => (prevValue *= curValue));
 console.log(getProductOfAllElements(numbers));
 
@@ -221,3 +224,16 @@ console.log('20116. ');
 // create a function that returns an array with separate denominations needed to
 // reach the amount passed into the function. Optimize for higher denominations.
 // 27.58 => [10, 10, 5, 1, 1, 0.5, 0.05, 0.01, 0.01, 0.01]
+
+// for in
+for (const key in object) {
+  if (object.hasOwnProperty(key)) {
+    const element = object[key];
+    console.log(element);
+  }
+}
+
+// for of
+for (const iterator of object) {
+  console.log(iterator);
+}
