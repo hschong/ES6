@@ -76,4 +76,10 @@ Person.prototype.reverseFullName = function () {
 };
 
 let a1 = new Person('Heeseok', 'Chong');
+
+Person.prototype.upperCaseFullName = function () {
+  return (this.first + ' ' + this.last).toUpperCase();
+};
+
 console.log(a1.fullName());
+console.log(a1.upperCaseFullName());
