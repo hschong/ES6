@@ -13,6 +13,11 @@ const name = cachedName || (cachedName = 'default');
 // This is useful for checking for null objects before accessing their attributes:
 let student = {
   name: 'Heeseok',
+  age: 20,
+  details: {
+    favFood: 'steak',
+    car: 'Benz',
+  },
 };
 const defaultName = student && student.name;
 
@@ -56,3 +61,19 @@ sum = add(3, 4, 5, 6);
 sum = add1(5, 6, 7, 8);
 sum = add1.apply(null, [2, 3, 4, 5]);
 console.log(sum);
+
+function Person(first, last) {
+  this.first = first;
+  this.last = last;
+}
+
+Person.prototype.fullName = function () {
+  return this.first + ' ' + this.last;
+};
+
+Person.prototype.reverseFullName = function () {
+  return this.last + ', ' + this.first;
+};
+
+let a1 = new Person('Heeseok', 'Chong');
+console.log(a1.fullName());
