@@ -1,16 +1,6 @@
 // Logical AND(&&) and Logical OR (||)
-// However, the && and || operators actually return the value of one of the specified operands, so if this operator is used with non-Boolean values, it will return a non-Boolean value.
 
 let cachedName = null;
-
-// result(L) = L(T) || R
-// result(R) = L(F) || R
-// caching values (when falsy values are invalid):
-const name = cachedName || (cachedName = 'default');
-
-// result(R) = L(T) && R
-// result(L) = L(F) && R
-// This is useful for checking for null objects before accessing their attributes:
 let student = {
   name: 'Heeseok',
   age: 20,
@@ -19,6 +9,11 @@ let student = {
     car: 'Benz',
   },
 };
+
+// caching values (when falsy values are invalid):
+const name = cachedName || (cachedName = 'default');
+
+// This is useful for checking for null objects before accessing their attributes:
 const defaultName = student && student.name;
 
 // for in
@@ -34,20 +29,8 @@ const defaultName = student && student.name;
 //   console.log(iterator);
 // }
 
-// using arguments
-function add() {
-  let sum = 0;
-  let length = arguments.length;
-  for (let i = 0; i < length; i++) {
-    console.log(arguments[i]);
-    sum += arguments[i];
-  }
-
-  return sum;
-}
-
-// Note: If you're writing ES6 compatible code, then rest parameters should be preferred.
-let add1 = (...args) => {
+// ES6: rest parameters should be preferred.
+let add = (...args) => {
   let sum = 0;
   for (let value of args) {
     sum += value;
@@ -58,10 +41,10 @@ let add1 = (...args) => {
 
 let sum = 0;
 sum = add(3, 4, 5, 6);
-sum = add1(5, 6, 7, 8);
-sum = add1.apply(null, [2, 3, 4, 5]);
+sum = add.apply(null, [2, 3, 4, 5]);
 console.log(sum);
 
+// prototype
 function Person(first, last) {
   this.first = first;
   this.last = last;
@@ -77,6 +60,7 @@ Person.prototype.reverseFullName = function () {
 
 let a1 = new Person('Heeseok', 'Chong');
 
+// Dynamic binding prototype
 Person.prototype.upperCaseFullName = function () {
   return (this.first + ' ' + this.last).toUpperCase();
 };
