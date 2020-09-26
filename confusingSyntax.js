@@ -11,17 +11,48 @@ const name = cachedName || (cachedName = 'default');
 // result(R) = L(T) && R
 // result(L) = L(F) && R
 // This is useful for checking for null objects before accessing their attributes:
-const name = student && student.name();
+let student = {
+  name: 'Heeseok',
+};
+const defaultName = student && student.name;
 
 // for in
-for (const key in object) {
-  if (object.hasOwnProperty(key)) {
-    const element = object[key];
-    console.log(element);
-  }
-}
+// for (const key in object) {
+//   if (object.hasOwnProperty(key)) {
+//     const element = object[key];
+//     console.log(element);
+//   }
+// }
 
 // for of
-for (const iterator of object) {
-  console.log(iterator);
+// for (const iterator of object) {
+//   console.log(iterator);
+// }
+
+// using arguments
+function add() {
+  let sum = 0;
+  let length = arguments.length;
+  for (let i = 0; i < length; i++) {
+    console.log(arguments[i]);
+    sum += arguments[i];
+  }
+
+  return sum;
 }
+
+// Note: If you're writing ES6 compatible code, then rest parameters should be preferred.
+let add1 = (...args) => {
+  let sum = 0;
+  for (let value of args) {
+    sum += value;
+  }
+
+  return sum;
+};
+
+let sum = 0;
+sum = add(3, 4, 5, 6);
+sum = add1(5, 6, 7, 8);
+sum = add1.apply(null, [2, 3, 4, 5]);
+console.log(sum);
